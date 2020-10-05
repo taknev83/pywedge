@@ -1,0 +1,11 @@
+# -*- coding: utf-8 -*-
+
+
+ipython
+jupyter
+xgboost>=1.1.1
+pandas
+scikit-learn>=0.23.1
+imbalanced-learn>=0.7
+featuretools
+warnings
