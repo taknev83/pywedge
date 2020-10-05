@@ -1,5 +1,5 @@
 # pywedge
-Cleans raw data, runs baseline models 
+Cleans raw data, runs baseline models. THIS IS IN BETA VERSION 
 
 Cleans the raw dataframe to fed into ML models. Following data pre_processing will be carried out,
 1) segregating numeric & categorical columns
