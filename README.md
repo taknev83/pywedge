@@ -19,4 +19,4 @@ Inputs:
 Returns:
 1) new_X (cleaned feature columns in dataframe)
 2) new_y (cleaned target column in dataframe)  
-3) new_test (cleaned tand out test dataset)
+3) new_test (cleaned stand out test dataset)
