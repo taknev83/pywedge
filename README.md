@@ -9,6 +9,7 @@ Cleans the raw dataframe to fed into ML models. Following data pre_processing wi
 5) SMOTE
 6) baseline model
 
+Pre_process_data()
 Inputs: 
 1) train = train dataframe
 2) test = test dataframe
@@ -20,3 +21,14 @@ Returns:
 1) new_X (cleaned feature columns in dataframe)
 2) new_y (cleaned target column in dataframe)  
 3) new_test (cleaned stand out test dataset)
+
+baseline_model()
+- For classification - classification_summary() 
+- For Regression - Regression_summary()
+
+Inputs:
+1) new_x
+2) new_y
+
+Returns:
+Various baseline model metrics 
