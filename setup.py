@@ -20,7 +20,6 @@ setuptools.setup(
         "jupyter",
         "xgboost>=1.1.1",
         "pandas",
-        "warnings",
         "scikit-learn>=0.23.1",
         "imbalanced-learn>=0.7",
     	"featuretools",        
