@@ -2,13 +2,12 @@
 Cleans raw data, runs baseline models 
 
 Cleans the raw dataframe to fed into ML models. Following data pre_processing will be carried out,
-
-        1) segregating numeric & categorical columns
-        2) missing values imputation for numeric & categorical columns
-        3) standardization
-        4) feature importance
-        5) SMOTE
-        6) baseline model
+1) segregating numeric & categorical columns
+2) missing values imputation for numeric & categorical columns
+3) standardization
+4) feature importance
+5) SMOTE
+6) baseline model
 
         Inputs: 
         1) train = train dataframe
