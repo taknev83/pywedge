@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 
 class Pre_process_data():
     ''' Cleans the raw dataframe to fed into ML models. Following data pre_processing will be carried out,
