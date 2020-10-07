@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+
 
 import setuptools
 
@@ -7,22 +7,23 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="pywedge",
-    version="0.1",
+    version="0.3",
     author="Venkatesh rengarajan Muthu",
     author_email="taknev83@gmail.com",
     description="Cleans raw data, runs baseline models",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    license='Apache License 2.0',
+    license='MIT',
     url="https://github.com/taknev83/pywedge/blob/main/pywedge.py",
-    packages=setuptools.find_packages(exclude=("tests",)),
+    packages=['pywedge'],
+    include_package_data=True,
     install_requires=[
         "jupyter",
-        "xgboost>=1.1.1",
+        "xgboost",
+        "catboost>=0.24",
         "pandas",
-        "scikit-learn>=0.23.1",
-        "imbalanced-learn>=0.7",
-    	"featuretools",        
+        "scikit-learn",
+        "imbalanced-learn",     
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
