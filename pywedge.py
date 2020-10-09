@@ -221,7 +221,7 @@ class baseline_model():
 
         from sklearn.model_selection import train_test_split
         X_train, X_test, y_train, y_test = train_test_split(
-                    self.X, self.y, test_size=float(input("Please enter test size (for eg. please enter 0.20 for 20% test size):\n")), random_state=1)
+                    self.X.values, self.y.values, test_size=float(input("Please enter test size (for eg. please enter 0.20 for 20% test size):\n")), random_state=1)
              
         from sklearn.neural_network import MLPClassifier
         from sklearn.neighbors import KNeighborsClassifier
@@ -262,13 +262,14 @@ class baseline_model():
         for name, classifier in head:
             start = time()
             classifier.fit(X_train, y_train)
-            predictions = classifier.predict(X_test)
             train_time = time() - start
             start = time()
+            predictions = classifier.predict(X_test)
+            predict_time = time()-start
             acc_score= (accuracy_score(y_test,predictions))
             roc_score= (roc_auc_score(y_test,predictions))
             f1_macro= (f1_score(y_test, predictions, average='macro'))
-            print("{:<15}| acc_score = {:.3f} | roc_score = {:,.3f} | f1_score(macro) = {:,.3f}".format(name, acc_score, roc_score, f1_macro))
+            print("{:<15}| acc_score = {:.3f} | roc_score = {:,.3f} | f1_score(macro) = {:,.3f} | Training time = {:,.3f} | Pred. time = {:,.3f}".format(name, acc_score, roc_score, f1_macro, train_time, predict_time))
         
     def Regression_summary(self):
         print('Starting regression summary...')
@@ -282,7 +283,7 @@ class baseline_model():
 
         from sklearn.model_selection import train_test_split
         X_train, X_test, y_train, y_test = train_test_split(
-                    self.X, self.y, test_size=float(input("Please enter test size: (for eg. please enter 0.20 for 20% test size): \n\t")), random_state=1)
+                    self.X.values, self.y.values, test_size=float(input("Please enter test size: (for eg. please enter 0.20 for 20% test size): \n\t")), random_state=1)
         from time import time
         from sklearn.neighbors import KNeighborsRegressor
         from sklearn.linear_model import LinearRegression
@@ -326,7 +327,7 @@ class baseline_model():
             rmse = sqrt(mean_absolute_error(y_test, predictions))
             r2 = r2_score(y_test, predictions)
             
-            print("{:<15}| exp_var = {:.3f} | mae = {:,.3f} | rmse = {:,.3f} | r2 = {:,.3f}".format(name, exp_var, mae, rmse, r2))
+            print("{:<15}| exp_var = {:.3f} | mae = {:,.3f} | rmse = {:,.3f} | r2 = {:,.3f} | Train time = {:,.3f} | Pred. time = {:,.3f}".format(name, exp_var, mae, rmse, r2, train_time, predict_time))
         
         print('------------------------NON LINEAR MODELS----------------------------------')
         print('---------------------THIS MIGHT TAKE A WHILE-------------------------------')
@@ -358,4 +359,5 @@ class baseline_model():
             rmse = sqrt(mean_absolute_error(y_test, predictions))
             r2 = r2_score(y_test, predictions)
             
-            print("{:<15}| exp_var = {:.3f} | mae = {:,.3f} | rmse = {:,.3f} | r2 = {:,.3f}".format(name, exp_var, mae, rmse, r2))
+            print("{:<15}| exp_var = {:.3f} | mae = {:,.3f} | rmse = {:,.3f} | r2 = {:,.3f} | Train time = {:,.3f} | Pred. time = {:,.3f}".format(name, exp_var, mae, rmse, r2, train_time, predict_time))
+        
