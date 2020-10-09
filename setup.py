@@ -7,8 +7,8 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="pywedge",
-    version="0.3",
-    author="Venkatesh rengarajan Muthu",
+    version="0.4.5",
+    author="Venkatesh Rengarajan Muthu",
     author_email="taknev83@gmail.com",
     description="Cleans raw data, runs baseline models",
     long_description=long_description,
@@ -20,13 +20,17 @@ setuptools.setup(
     install_requires=[
         "jupyter",
         "xgboost",
-        "catboost>=0.24",
         "pandas",
+        "catboost",
+        "numpy",
         "scikit-learn",
         "imbalanced-learn",     
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
+        "Development Status :: 4 - Beta",
+        "License :: OSI Approved :: MIT License",
+        "Programming Language :: Python :: 3 :: Only",
         "Operating System :: OS Independent",
     ],
 )
