@@ -15,7 +15,7 @@ Cleans the raw data frame to fed into ML models. Following data pre_processing w
 3) standardization
 4) feature importance
 5) class oversampling using SMOTE
-6) baseline model
+6) computes 10 different baseline models
 
 # Pre_process_data()
 Inputs: 
