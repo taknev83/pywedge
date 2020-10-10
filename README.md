@@ -1,15 +1,15 @@
 # Pywedge
 
-Pywedge is a [pip installable](https://pypi.org/project/pywedge/) python package that intends to,
+Pywedge is a [pip installable](https://pypi.org/project/pywedge/) Python package that intends to,
 
 1. Quickly preprocess the data by taking the user’s preferred choice of pre-processing techniques & it returns the cleaned datasets to the user in the first step.
 
 2. In the second step, Pywedge offers a baseline class that has a classification summary method & regression summary method, which can return ten various baseline models,        which can point the user to explore the best performing baseline model.
 
-The intention of pywedge is to help the user by quickly preprocessing the data and to rightly point out the best performing baseline model for the given dataset so that the user can spend quality time tuning such a model algorithm.
+Pywedge intends to help the user by quickly preprocessing the data and to rightly point out the best performing baseline model for the given dataset so that the user can spend quality time tuning such a model algorithm.
 
 # Pywedge Features
-Cleans the raw dataframe to fed into ML models. Following data pre_processing will be carried out,
+Cleans the raw data frame to fed into ML models. Following data pre_processing will be carried out,
 1) segregating numeric & categorical columns
 2) missing values imputation for numeric & categorical columns
 3) standardization
@@ -37,8 +37,8 @@ new_X, new_y, new_test = ppd.dataframe_clean()
 ```
 ![categorical_conversion](https://github.com/taknev83/pywedge/blob/main/images/catcodes_2.JPG)
 
-from the image, it can be observed that, calling dataframe_clean method does the following,
-1. Providing a summary of zero & missing values in train dataset
+from the image, it can be observed that calling dataframe_clean method does the following,
+1. Providing a summary of zero & missing values in the training dataset
 2. class balance summary
 3. Categorical column conversion 
 
@@ -75,7 +75,7 @@ The classification summary provides Top 10 feature importance (calculated using 
 
 ![cls_smry_2](https://github.com/taknev83/pywedge/blob/main/images/classification_summary_2.JPG)
 
-The classification summary provides baseline models of 10 different algorithms, user can identify best performing baseline model from the classification summary.
+The classification summary provides baseline models of 10 different algorithms, user can identify best performing baseline models from the classification summary.
 
 In the same way, regression analysis can be done using a few lines of code. 
 
