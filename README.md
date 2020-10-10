@@ -35,7 +35,7 @@ import pywedge as pw
 ppd = pw.Pre_process_data(train, test, c, y, type='Classification")
 new_X, new_y, new_test = ppd.dataframe_clean()
 ```
-![categorical_conversion](https://github.com/taknev83/pywedge/blob/main/images/catcodes_1.JPG)
+![categorical_conversion](https://github.com/taknev83/pywedge/blob/main/images/catcodes_2.JPG)
 
 from the image, it can be observed that, calling dataframe_clean method does the following,
 1. Providing a summary of zero & missing values in train dataset
