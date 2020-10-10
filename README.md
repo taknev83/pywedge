@@ -1,3 +1,5 @@
+[![Documentation Status](https://readthedocs.org/projects/pywedge/badge/?version=main)](https://pywedge.readthedocs.io/en/main/?badge=main)  [![HitCount](http://hits.dwyl.com/taknev83/pywedge.svg)](http://hits.dwyl.com/taknev83/pywedge)
+
 # Pywedge
 
 Pywedge is a [pip installable](https://pypi.org/project/pywedge/) Python package that intends to,
