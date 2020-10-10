@@ -90,5 +90,6 @@ In the same way, regression analysis can be done using a few lines of code.
 
 
 
-- Requires Python 64 bit
-- THIS IS IN BETA VERSION 
+Requires Python 64 bit
+
+THIS IS IN BETA VERSION 
