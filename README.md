@@ -8,7 +8,7 @@ Pywedge is a [pip installable](https://pypi.org/project/pywedge/) python package
 
 The intention of pywedge is to help the user by quickly preprocessing the data and to rightly point out the best performing baseline model for the given dataset so that the user can spend quality time tuning such a model algorithm.
 
-### Pywedge Features
+# Pywedge Features
 Cleans the raw dataframe to fed into ML models. Following data pre_processing will be carried out,
 1) segregating numeric & categorical columns
 2) missing values imputation for numeric & categorical columns
