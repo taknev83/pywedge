@@ -87,7 +87,8 @@ In the same way, regression analysis can be done using a few lines of code.
 - [ ] A separate method to produce good charts
 
 
+
+
+
+
 THIS IS IN BETA VERSION 
-
-
-
