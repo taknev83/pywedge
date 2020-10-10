@@ -39,7 +39,7 @@ new_X, new_y, new_test = ppd.dataframe_clean()
 
 from the image, it can be observed that calling dataframe_clean method does the following,
 1. Providing a summary of zero & missing values in the training dataset
-2. class balance summary
+2. Class balance summary
 3. Categorical column conversion 
 
 ![standardization](https://github.com/taknev83/pywedge/blob/main/images/Standardization.JPG)
@@ -90,5 +90,5 @@ In the same way, regression analysis can be done using a few lines of code.
 
 
 
-
-THIS IS IN BETA VERSION 
+- Requires Python 64 bit
+- THIS IS IN BETA VERSION 
