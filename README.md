@@ -14,7 +14,7 @@ Pywedge intends to help the user by quickly making charts, preprocessing the dat
 
 # Pywedge Features
 Cleans the raw data frame to fed into ML models. Following data pre_processing will be carried out,
-1) makes 9 different types of interactive charts with interactive axis selection widgets
+1) makes 8 different types of interactive charts with interactive axis selection widgets
 2) segregating numeric & categorical columns
 3) missing values imputation for numeric & categorical columns
 4) standardization
