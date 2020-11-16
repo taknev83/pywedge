@@ -4,20 +4,43 @@
 
 Pywedge is a [pip installable](https://pypi.org/project/pywedge/) Python package that intends to,
 
-1. Quickly preprocess the data by taking the user’s preferred choice of pre-processing techniques & it returns the cleaned datasets to the user in the first step.
+1. Make multiple charts in a single line of code, to enable the user to quickly read through the charts and can make informed choices in pre-processing steps
 
-2. In the second step, Pywedge offers a baseline class that has a classification summary method & regression summary method, which can return ten various baseline models,        which can point the user to explore the best performing baseline model.
+2. Quickly preprocess the data by taking the user’s preferred choice of pre-processing techniques & it returns the cleaned datasets to the user in the first step.
 
-Pywedge intends to help the user by quickly preprocessing the data and to rightly point out the best performing baseline model for the given dataset so that the user can spend quality time tuning such a model algorithm.
+3. Make a baseline model summary, which can return ten various baseline models, which can point the user to explore the best performing baseline model.
+
+Pywedge intends to help the user by quickly making charts, preprocessing the data and to rightly point out the best performing baseline model for the given dataset so that the user can spend quality time tuning such a model algorithm.
 
 # Pywedge Features
 Cleans the raw data frame to fed into ML models. Following data pre_processing will be carried out,
-1) segregating numeric & categorical columns
-2) missing values imputation for numeric & categorical columns
-3) standardization
-4) feature importance
-5) class oversampling using SMOTE
-6) computes 10 different baseline models
+1) makes 9 different types of interactive charts with interactive axis selection widgets
+2) segregating numeric & categorical columns
+3) missing values imputation for numeric & categorical columns
+4) standardization
+5) feature importance
+6) class oversampling using SMOTE
+7) computes 10 different baseline models
+
+# Make_Charts()
+    Makes 8 different types of interactive Charts with interactive axis selection widgets in a single line of code for the given dataset. 
+    Different types of Charts viz,
+        1. Scatter Plot
+        2. Pie Chart
+        3. Bar Plot
+        4. Violin Plot
+        5. Box Plot
+        6. Distribution Plot
+        7. Histogram 
+        8. Correlation Plot
+    
+    Inputs:
+        1. Dataframe
+        2. c = any redundant column to be removed (like ID column etc., at present supports a single column removal, subsequent version will provision multiple column removal requirements)
+        3. y = target column name as a string 
+        
+    Returns:
+        Charts widget
 
 # Pre_process_data()
 Inputs: 
@@ -83,10 +106,10 @@ In the same way, regression analysis can be done using a few lines of code.
 
 
 ### The following additions to pywedge is planned,
+- [X] A separate method to produce good charts
 - [ ] To handle NLP column
 - [ ] To handle time series dataset
 - [ ] To handle stock prices specific analysis
-- [ ] A separate method to produce good charts
 
 
 
