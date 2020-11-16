@@ -24,23 +24,25 @@ Cleans the raw data frame to fed into ML models. Following data pre_processing w
 
 # Make_Charts()
 Makes 8 different types of interactive Charts with interactive axis selection widgets in a single line of code for the given dataset. 
+
 Different types of Charts viz,
-    1. Scatter Plot
-    2. Pie Chart
-    3. Bar Plot
-    4. Violin Plot
-    5. Box Plot
-    6. Distribution Plot
-    7. Histogram 
-    8. Correlation Plot
+1) Scatter Plot
+2) Pie Chart
+3) Bar Plot
+4) Violin Plot
+5) Box Plot
+6) Distribution Plot
+7) Histogram 
+8) Correlation Plot
     
 Inputs:
-    1. Dataframe
-    2. c = any redundant column to be removed (like ID column etc., at present supports a single column removal, subsequent version will provision multiple column removal requirements)
-    3. y = target column name as a string 
+1) Dataframe
+2) c = any redundant column to be removed (like ID column etc., at present supports a single column removal, subsequent version will provision multiple column removal requirements)
+3) y = target column name as a string 
         
 Returns:
-    Charts widget
+
+Charts widget
 
 # Pre_process_data()
 Inputs: 
