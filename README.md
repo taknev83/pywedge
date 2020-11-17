@@ -44,7 +44,7 @@ Returns:
 
 Charts widget
 
-<div align="center">
+<div align="left">
       <a href="https://youtu.be/-3rrQqyMTVk">
      <img 
       src="https://i9.ytimg.com/vi/-3rrQqyMTVk/mq1.jpg?sqp=CPS7zv0F&rs=AOn4CLB3CAyXYfI1JppIMYYhSsGznJKGvg" 
