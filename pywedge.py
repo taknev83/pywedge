@@ -1,3 +1,282 @@
+class Pywedge_Charts():
+    '''
+    Makes 8 different types of interactive Charts with interactive axis selection widgets in a single line of code for the given dataset. 
+    Different types of Charts viz,
+        1. Scatter Plot
+        2. Pie Chart
+        3. Bar Plot
+        4. Violin Plot
+        5. Box Plot
+        6. Distribution Plot
+        7. Histogram 
+        8. Correlation Plot
+    
+    Inputs:
+        1. Dataframe
+        2. c = any redundant column to be removed (like ID column etc., at present supports a single column removal, subsequent version will provision multiple column removal requirements)
+        3. y = target column name as a string 
+        
+    Returns:
+        Charts widget
+    '''
+   
+    def __init__(self, train, c, y):
+        self.train = train
+        self.c = c
+        self.y = y
+        self.X = self.train.drop(self.y,1)
+ 
+    def make_charts(self): 
+        import pandas as pd
+        import ipywidgets as widgets
+        import plotly.express as px
+        import plotly.figure_factory as ff
+        import plotly.offline as pyo
+        from ipywidgets import HBox, VBox, Button
+        from ipywidgets import  interact_manual, interactive
+        import plotly.graph_objects as go
+        from plotly.offline import iplot
+        
+        header = widgets.HTML(value="<h2>Pywedge Make_Charts </h2>")
+        display(header)
+
+        
+        if len(self.train) > 500:
+            from sklearn.model_selection import train_test_split
+            test_size = 500/len(self.train)
+            if self.c!=None:
+                data = self.X.drop(self.c,1)
+            else:
+                data = self.X
+                
+            target = self.train[self.y]
+            X_train, X_test, y_train, y_test = train_test_split(data, target, test_size=test_size, random_state=1)
+            train_mc = pd.concat([X_test, y_test], axis=1)
+        else:
+            train_mc = self.train
+
+        train_numeric = train_mc.select_dtypes('number')
+        train_cat = train_mc.select_dtypes(exclude='number')
+
+        out1 = widgets.Output()
+        out2 = widgets.Output()
+        out3 = widgets.Output()
+        out4 = widgets.Output()
+        out5 = widgets.Output()
+        out6 = widgets.Output()
+        out7 = widgets.Output()
+        out8 = widgets.Output()
+        out8 = widgets.Output()
+        
+        tab = widgets.Tab(children = [out1, out2, out3, out4, out5, out6, out7, out8])
+        tab.set_title(0, 'Scatter Plot')
+        tab.set_title(1, 'Pie Chart')
+        tab.set_title(2, 'Bar Plot')
+        tab.set_title(3, 'Violin Plot')  
+        tab.set_title(4, 'Box Plot')
+        tab.set_title(5, 'Distribution Plot')
+        tab.set_title(6, 'Histogram')
+        tab.set_title(7, 'Correlation plot')
+        
+        display(tab)
+        
+        with out1:
+            header = widgets.HTML(value="<h1>Scatter Plots </h1>")
+            display(header)
+
+            x = widgets.Dropdown(options=list(train_mc.select_dtypes('number').columns))
+            def scatter_plot(X_Axis=list(train_mc.select_dtypes('number').columns), 
+                            Y_Axis=list(train_mc.select_dtypes('number').columns)[1:], 
+                            Color=list(train_mc.select_dtypes('number').columns)):
+        
+                fig = go.FigureWidget(data=go.Scatter(x=train_mc[X_Axis],
+                                                y=train_mc[Y_Axis],
+                                                mode='markers',
+                                                text=list(train_cat),
+                                                marker_color=train_mc[Color]))
+        
+                fig.update_layout(title=f'{Y_Axis.title()} vs {X_Axis.title()}', 
+                                xaxis_title=f'{X_Axis.title()}',
+                                yaxis_title=f'{Y_Axis.title()}', 
+                                autosize=False,width=600,height=600)
+                fig.show()
+        
+            widgets.interact_manual.opts['manual_name'] = 'Make_Chart'
+            one = interactive(scatter_plot,{'manual': True, 'manual_name':'Make_Chart'})
+            two = interactive(scatter_plot, {'manual': True, 'manual_name':'Make_Chart'})
+            three = interactive(scatter_plot, {'manual': True, 'manual_name':'Make_Chart'})
+            four = interactive(scatter_plot, {'manual': True, 'manual_name':'Make_Chart'})
+
+            g = widgets.HBox([one, two])
+            display(g)
+            h = widgets.HBox([three, four])
+            display(h)
+            
+        with out2:
+            header = widgets.HTML(value="<h1>Pie Charts </h1>")
+            display(header)
+
+            def pie_chart(Labels=list(train_mc.select_dtypes(exclude='number').columns),
+                        Values=list(train_mc.select_dtypes('number').columns)[0:]):
+                
+                fig = go.FigureWidget(data=[go.Pie(labels=train_mc[Labels], values=train_mc[Values])])
+                
+                fig.update_layout(title=f'{Values.title()} vs {Labels.title()}',
+                                autosize=False,width=500,height=500)
+                fig.show()    
+            one = interactive(pie_chart, {'manual': True, 'manual_name':'Make_Chart'})
+            two = interactive(pie_chart, {'manual': True, 'manual_name':'Make_Chart'})
+            three = interactive(pie_chart, {'manual': True, 'manual_name':'Make_Chart'})
+            four = interactive(pie_chart, {'manual': True, 'manual_name':'Make_Chart'})
+
+            g = widgets.HBox([one, two])
+            display(g)
+            h = widgets.HBox([three, four])
+            display(h)
+
+        with out3:
+            header = widgets.HTML(value="<h1>Bar Plots </h1>")
+            display(header)
+
+            def bar_plot(X_Axis=list(train_mc.select_dtypes(exclude='number').columns), 
+                        Y_Axis=list(train_mc.select_dtypes('number').columns)[1:],
+                        Color=list(train_mc.select_dtypes(exclude='number').columns)):
+
+                fig1 = px.bar(train_mc, x=train_mc[X_Axis], y=train_mc[Y_Axis], color=train_mc[Color])       
+                fig1.update_layout(barmode='group', 
+                                title=f'{X_Axis.title()} vs {Y_Axis.title()}', 
+                                xaxis_title=f'{X_Axis.title()}',
+                                yaxis_title=f'{Y_Axis.title()}',
+                                autosize=False,width=600,height=600)
+                fig1.show()
+            one = interactive(bar_plot, {'manual': True, 'manual_name':'Make_Chart'})
+            two = interactive(bar_plot, {'manual': True, 'manual_name':'Make_Chart'})
+            three = interactive(bar_plot, {'manual': True, 'manual_name':'Make_Chart'})
+            four = interactive(bar_plot, {'manual': True, 'manual_name':'Make_Chart'})
+            g = widgets.HBox([one, two])
+            display(g)
+            h = widgets.HBox([three, four])
+            display(h)
+
+                
+        with out4:
+            header = widgets.HTML(value="<h1>Violin Plots </h1>")
+            display(header)
+
+            def viol_plot(X_Axis=list(train_mc.select_dtypes('number').columns), 
+                          Y_Axis=list(train_mc.select_dtypes('number').columns)[0:], 
+                          Color=list(train_mc.select_dtypes(exclude='number').columns)):
+                
+                fig2 = px.violin(train_mc, X_Axis, Y_Axis, Color, box=True, hover_data=train_mc.columns)
+                fig2.update_layout(title=f'{X_Axis.title()} vs {Y_Axis.title()}', 
+                                xaxis_title=f'{X_Axis.title()}',
+                                autosize=False,width=600,height=600)
+                fig2.show()
+        
+            one = interactive(viol_plot, {'manual': True, 'manual_name':'Make_Chart'})
+            two = interactive(viol_plot, {'manual': True, 'manual_name':'Make_Chart'})
+            three = interactive(viol_plot, {'manual': True, 'manual_name':'Make_Chart'})
+            four = interactive(viol_plot, {'manual': True, 'manual_name':'Make_Chart'})
+            g = widgets.HBox([one, two])
+            display(g)
+            h = widgets.HBox([three, four])
+            display(h)
+        
+                
+        with out5:
+            header = widgets.HTML(value="<h1>Box Plots </h1>")
+            display(header)
+            
+            def box_plot(X_Axis=list(train_mc.select_dtypes(exclude='number').columns),
+                        Y_Axis=list(train_mc.select_dtypes('number').columns)[0:],
+                        Color=list(train_mc.select_dtypes(exclude='number').columns)):
+
+
+                fig4 = px.box(train_mc, x=X_Axis, y=Y_Axis, color=Color, points="all")
+ 
+                fig4.update_layout(barmode='group', 
+                                title=f'{X_Axis.title()} vs {Y_Axis.title()}', 
+                                xaxis_title=f'{X_Axis.title()}',
+                                yaxis_title=f'{Y_Axis.title()}',
+                                autosize=False,width=600,height=600)
+                fig4.show()
+                
+            one = interactive(box_plot, {'manual': True, 'manual_name':'Make_Chart'})
+            two = interactive(box_plot, {'manual': True, 'manual_name':'Make_Chart'})
+            three = interactive(box_plot, {'manual': True, 'manual_name':'Make_Chart'})
+            four = interactive(box_plot, {'manual': True, 'manual_name':'Make_Chart'})
+            g = widgets.HBox([one, two])
+            display(g)
+            h = widgets.HBox([three, four])
+            display(h)
+
+        with out6:
+            header = widgets.HTML(value="<h1>Distribution Plots </h1>")
+            display(header)
+
+            def dist_plot(X_Axis=list(train_mc.select_dtypes('number').columns), 
+                          Y_Axis=list(train_mc.select_dtypes('number').columns)[0:], 
+                          Color=list(train_mc.select_dtypes(exclude='number').columns)):
+                
+                fig2 = px.histogram(train_mc, X_Axis, Y_Axis, Color, marginal='violin', hover_data=train_mc.columns)
+                fig2.update_layout(title=f'{X_Axis.title()} vs {Y_Axis.title()}', 
+                                xaxis_title=f'{X_Axis.title()}',
+                                autosize=False,width=600,height=600)
+                fig2.show()
+        
+            one = interactive(dist_plot, {'manual': True, 'manual_name':'Make_Chart'})
+            two = interactive(dist_plot, {'manual': True, 'manual_name':'Make_Chart'})
+            three = interactive(dist_plot, {'manual': True, 'manual_name':'Make_Chart'})
+            four = interactive(dist_plot, {'manual': True, 'manual_name':'Make_Chart'})
+            g = widgets.HBox([one, two])
+            display(g)
+            h = widgets.HBox([three, four])
+            display(h)       
+        
+        with out7:
+            header = widgets.HTML(value="<h1>Histogram </h1>")
+            display(header)
+
+            def hist_plot(X_Axis=list(train_mc.columns)):
+                fig2 = px.histogram(train_mc, X_Axis)
+                fig2.update_layout(title=f'{X_Axis.title()}', 
+                                xaxis_title=f'{X_Axis.title()}',
+                                autosize=False,width=600,height=600)
+                fig2.show()
+                    
+        
+            one = interactive(hist_plot, {'manual': True, 'manual_name':'Make_Chart'})
+            two = interactive(hist_plot, {'manual': True, 'manual_name':'Make_Chart'})
+            three = interactive(hist_plot, {'manual': True, 'manual_name':'Make_Chart'})
+            four = interactive(hist_plot, {'manual': True, 'manual_name':'Make_Chart'})
+
+            g = widgets.HBox([one, two])
+            display(g)
+            h = widgets.HBox([three, four])
+            display(h)
+
+        with out8:
+
+            header = widgets.HTML(value="<h1>Correlation Plots </h1>")
+            display(header)
+
+            import plotly.figure_factory as ff
+            corrs = train_mc.corr()
+            colorscale = ['Greys', 'Greens', 'Bluered', 'RdBu',
+                    'Reds', 'Blues', 'Picnic', 'Rainbow', 'Portland', 'Jet',
+                    'Hot', 'Blackbody', 'Earth', 'Electric', 'Viridis', 'Cividis']
+            @interact_manual
+            def plot_corrs(colorscale=colorscale):
+                figure = ff.create_annotated_heatmap(z = corrs.round(2).values, 
+                                                x =list(corrs.columns), 
+                                                y=list(corrs.index), 
+                                                colorscale=colorscale,
+                                                annotation_text=corrs.round(2).values)
+                iplot(figure)
+
+        footer = widgets.HTML(value="<h4><em>Charts compiled by Pywedge make_charts </em></h4>")
+        display(footer)
+
 
 class Pre_process_data():
     ''' Cleans the raw dataframe to fed into ML models. Following data pre_processing will be carried out,
@@ -269,7 +548,7 @@ class baseline_model():
             acc_score= (accuracy_score(y_test,predictions))
             roc_score= (roc_auc_score(y_test,predictions))
             f1_macro= (f1_score(y_test, predictions, average='macro'))
-            print("{:<15}| acc_score = {:.3f} | roc_score = {:,.3f} | f1_score(macro) = {:,.3f} | Training time = {:,.3f} | Pred. time = {:,.3f}".format(name, acc_score, roc_score, f1_macro, train_time, predict_time))
+            print("{:<15}| acc_score = {:.3f} | roc_score = {:,.3f} | f1_score(macro) = {:,.3f} | Train time = {:,.3f}s | Pred. time = {:,.3f}s".format(name, acc_score, roc_score, f1_macro, train_time, predict_time))
         
     def Regression_summary(self):
         print('Starting regression summary...')
@@ -305,7 +584,6 @@ class baseline_model():
         lin_regressors = {
             'Linear Reg'       : LinearRegression(), 
             'KNN'              : KNeighborsRegressor(),
-            'SVR'              : SVR(),
             'LinearSVR'        : LinearSVR(),
             'Lasso'            : Lasso(),
             'Ridge'            : Ridge(),
@@ -327,7 +605,7 @@ class baseline_model():
             rmse = sqrt(mean_absolute_error(y_test, predictions))
             r2 = r2_score(y_test, predictions)
             
-            print("{:<15}| exp_var = {:.3f} | mae = {:,.3f} | rmse = {:,.3f} | r2 = {:,.3f} | Train time = {:,.3f} | Pred. time = {:,.3f}".format(name, exp_var, mae, rmse, r2, train_time, predict_time))
+            print("{:<15}| exp_var = {:.3f} | mae = {:,.3f} | rmse = {:,.3f} | r2 = {:,.3f} | Train time = {:,.3f}s | Pred. time = {:,.3f}s".format(name, exp_var, mae, rmse, r2, train_time, predict_time))
         
         print('------------------------NON LINEAR MODELS----------------------------------')
         print('---------------------THIS MIGHT TAKE A WHILE-------------------------------')
@@ -359,5 +637,5 @@ class baseline_model():
             rmse = sqrt(mean_absolute_error(y_test, predictions))
             r2 = r2_score(y_test, predictions)
             
-            print("{:<15}| exp_var = {:.3f} | mae = {:,.3f} | rmse = {:,.3f} | r2 = {:,.3f} | Train time = {:,.3f} | Pred. time = {:,.3f}".format(name, exp_var, mae, rmse, r2, train_time, predict_time))
+            print("{:<15}| exp_var = {:.3f} | mae = {:,.3f} | rmse = {:,.3f} | r2 = {:,.3f} | Train time = {:,.3f}s | Pred. time = {:,.3f}s".format(name, exp_var, mae, rmse, r2, train_time, predict_time))
         
