@@ -49,7 +49,7 @@ Pywedge-Make_Charts Demo YouTube link below,
 <div align="left">
       <a href="https://youtu.be/-3rrQqyMTVk">
      <img 
-      src="https://i9.ytimg.com/vi/-3rrQqyMTVk/mq1.jpg?sqp=CPS7zv0F&rs=AOn4CLB3CAyXYfI1JppIMYYhSsGznJKGvg" 
+      src="https://i9.ytimg.com/vi/-3rrQqyMTVk/mq1.jpg?sqp=CKDh0_0F&rs=AOn4CLBnWEI7fQc0hIr7VN9bxs6Lg0Dg3g" 
       alt="Pywedge-Make_Charts" 
       style="width:100%;">
       </a>
