@@ -49,12 +49,14 @@ Pywedge-Make_Charts Demo YouTube link below,
 <div align="left">
       <a href="https://youtu.be/-3rrQqyMTVk">
      <img 
-      src="https://i9.ytimg.com/vi/-3rrQqyMTVk/mq1.jpg?sqp=CKDh0_0F&rs=AOn4CLBnWEI7fQc0hIr7VN9bxs6Lg0Dg3g" 
+      src="https://raw.githubusercontent.com/taknev83/pywedge/main/images/mq1.jpg" 
       alt="Pywedge-Make_Charts" 
       style="width:100%;">
       </a>
     </div>
 
+
+Please read about Pywedge-Make_Charts module in this article published in [Analytics India Magazine](https://analyticsindiamag.com/how-to-build-interactive-eda-in-2-lines-of-code-using-pywedge/).
 
 # Pre_process_data()
 Inputs: 
