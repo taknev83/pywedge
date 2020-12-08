@@ -1,3 +1,5 @@
+
+
 import setuptools
 
 with open("README.md", "r", encoding="utf-8") as fh:
@@ -5,7 +7,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="pywedge",
-    version="0.5",
+    version="0.5.1.2",
     author="Venkatesh Rengarajan Muthu",
     author_email="taknev83@gmail.com",
     description="Makes interactive Charts, Cleans raw data, Runs baseline models",
@@ -16,17 +18,14 @@ setuptools.setup(
     packages=['pywedge'],
     include_package_data=True,
     install_requires=[
-        "jupyter",
-        "xgboost",
-        "pandas",
-        "catboost>=0.24",
-        "numpy",
-        "scikit-learn",
-        "imbalanced-learn",
-        "plotly",
-        "ipywidgets",
-        "voila",
-        "voila-gridstack"
+        "xgboost>1.2",
+        "pandas>1.1.4",
+        "catboost>0.24",
+        "numpy>1.19.3",
+        "scikit-learn>0.23",
+        "imbalanced-learn>=0.70",
+        "plotly>4.12",
+        "ipywidgets>=7.5.1"
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
