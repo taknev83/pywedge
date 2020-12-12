@@ -10,7 +10,7 @@
 pip install pywedge
 ```
 
-For JupyterLab, please enable the following extensions in anaconda prompt to have the chart widget rendered,
+For JupyterLab, please run the following commands in anaconda prompt to enable required JupyterLab extensions to display interactive chart widget,
 
 ```
 conda install -c conda-forge nodejs
