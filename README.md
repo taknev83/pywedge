@@ -4,6 +4,25 @@
 
 # [Pywedge-Make_Charts Heroku Web App - Demo](https://pywedge-make-charts.herokuapp.com/)
 
+# Installation
+
+```
+pip install pywedge
+```
+
+For JupyterLab, please enable the following extensions in anaconda prompt to have the chart widget rendered,
+
+```
+conda install -c conda-forge nodejs
+
+jupyter labextension install @jupyter-widgets/jupyterlab-manager
+
+jupyter labextension install jupyterlab-plotly@4.14.1
+
+jupyter labextension install @jupyter-widgets/jupyterlab-manager plotlywidget@4.14.1
+```
+
+
 Pywedge is a [pip installable](https://pypi.org/project/pywedge/) Python package that intends to,
 
 1. Make multiple charts in a single line of code, to enable the user to quickly read through the charts and can make informed choices in pre-processing steps
