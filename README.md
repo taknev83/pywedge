@@ -157,7 +157,7 @@ Args:
 - For classification - HP_Tune_Classification() 
 - For Regression - HP_Tune_Regression()
 
-![HP_Tune}(https://raw.githubusercontent.com/taknev83/pywedge/main/images/HP_tune.gif)  
+![HP_Tune](https://raw.githubusercontent.com/taknev83/pywedge/main/images/HP_tune.gif)  
     
 As seen in the above GIF, user can interactively enter hyperparameter values, without worrying about tracking the same, as the integreted MLFlow automatically takes care of tracking hyperparameter values. 
 
