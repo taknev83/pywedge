@@ -37,13 +37,20 @@ Pywedge intends to help the user by quickly making charts, preprocessing the dat
 
 # Pywedge Features
 Cleans the raw data frame to fed into ML models. Following data pre_processing will be carried out,
-1) Makes 8 different types of interactive charts with interactive axis selection widgets
-2) Segregating numeric & categorical columns
-3) Missing values imputation for numeric & categorical columns
-4) Standardization
-5) Feature importance
-6) Class oversampling using SMOTE
-7) Computes 10 different baseline models
+1) Makes 8 different types of ***interactive charts*** with interactive axis selection widgets
+2) Interactive pre-processing & 10 different baseline models 
+    - Missing values imputation for numeric & categorical columns
+    - Standardization
+    - Feature importance
+    - Class oversampling using SMOTE
+    - Computes 10 different baseline models
+ 3) Interactive Hyperparameter tuning & tracking hyperparameters using integreted MLFlow
+    - Classification / Regression Hyperparameters tuning
+        - Available baseline estimators for interactive hyperparameter tuning as of now, more baseline estimators will be added soon for interactive hyperparameter tunings
+        - Logistic / Linear Regression
+        - Decision Tree Classifier / Regressor
+        - Random Forest Clasifier/ Regressor
+        - KNN Classifier / Regressor
 
 # Make_Charts()
 Makes 8 different types of interactive Charts with interactive axis selection widgets in a single line of code for the given dataset. 
@@ -58,7 +65,7 @@ Different types of Charts viz,
 7) Histogram 
 8) Correlation Plot
     
-Inputs:
+Arguments:
 1) Dataframe
 2) c = any redundant column to be removed (like ID column etc., at present supports a single column removal, subsequent version will provision multiple column removal requirements)
 3) y = target column name as a string 
@@ -82,67 +89,79 @@ Pywedge-Make_Charts Demo YouTube link below,
 
 Please read about Pywedge-Make_Charts module in this article published in [Analytics India Magazine](https://analyticsindiamag.com/how-to-build-interactive-eda-in-2-lines-of-code-using-pywedge/).
 
-# Pre_process_data()
-Inputs: 
+# baseline_model()
+The baseline_model class starts with interactive pre-processing steps,
+![baseline_model](https://raw.githubusercontent.com/taknev83/pywedge/main/images/baseline_models_inputs.jpg)
+
+Instantiate the baseline class & call the classification_summary method from baseline_model class,
+
+```python
+blm = pw.baseline_model(train, test, c, y, type)
+blm.classification_summary()
+```
+
+Args:
 1) train = train dataframe
 2) test = test dataframe
 3) c = any redundant column to be removed (like ID column etc., at present supports a single column removal, subsequent version will provision multiple column removal requirements)
 4) y = target column name as a string 
 5) type = Classification(Default) / Regression
 
-Returns:
-1) new_X (cleaned feature columns in dataframe)
-2) new_y (cleaned target column in dataframe)  
-3) new_test (cleaned stand out test dataset)
-```python
-!pip install pywedge
-import pywedge as pw
-ppd = pw.Pre_process_data(train, test, c, y, type='Classification")
-new_X, new_y, new_test = ppd.dataframe_clean()
-```
-![categorical_conversion](https://github.com/taknev83/pywedge/blob/main/images/catcodes_2.JPG)
 
-from the image, it can be observed that calling dataframe_clean method does the following,
-1. Providing a summary of zero & missing values in the training dataset
-2. Class balance summary
-3. Categorical column conversion 
-
-![standardization](https://github.com/taknev83/pywedge/blob/main/images/Standardization.JPG)
-
-user is asked for standardization choice...
-
-![smote](https://github.com/taknev83/pywedge/blob/main/images/smote.JPG)
-
-For binary classification tasks, pywedge computes class balance & asks the user if oversampling using SMOTE to be applied to the data. 
-
-
-# baseline_model()
 - For classification - classification_summary() 
 - For Regression - Regression_summary()
 
-Inputs:
-1) new_x
-2) new_y
+User Inputs:
+1) Categorical columns conversion options
+    -   Using Pandas Catcodes
+    -   Using Pandas Get Dummies
+2) Standardization Options,
+    -   Standard scalar
+    -   Minmax scalar
+    -   Robust Scalar
+    -   No Standardization
+3) For Classification, Class balance using SMOTE options
+    -   Yes
+    -   No
+4) Test Size for Train-test split
+    -   test size in float
 
 Returns:
 
-Various baseline model metrics
+1) Baseline models tab - Various baseline model metrics
+2) Predict Baseline model tab - User can select the preferred available baseline choices to predict
 
-Instantiate the baseline class & call the classification_summary method from baseline_model class,
+![baseline_output](https://raw.githubusercontent.com/taknev83/pywedge/main/images/baseline_model_output.gif)
+
+
+# Pywedge_HP()
+
+* Introducing interactive hyperparameter tuning classes, Pywedge_HP, which has following two methods,
+    - HP_Tune_Classification
+    - HP_Tune_Regression
+
+Instantiate the Pywedge_HP class & call the HP_Tune_CLassification method from Pywedge_HP class,
 
 ```python
-blm = pw.baseline_model(X,y)
-blm.classification_summary()
+pph = pw.Pywedge_HP(train, test, c, y)
+pph.HP_Tune_Classification()
 ```
-![classification_summary](https://github.com/taknev83/pywedge/blob/main/images/classification_summary.JPG)
 
-The classification summary provides Top 10 feature importance (calculated using Adaboost feature importance) and asks for the test size from the user.
+Args:
+1) train = train dataframe
+2) test = test dataframe
+3) c = any redundant column to be removed (like ID column etc., at present supports a single column removal, subsequent version will provision multiple column removal requirements)
+4) y = target column name as a string 
 
-![cls_smry_2](https://github.com/taknev83/pywedge/blob/main/images/classification_summary_2.JPG)
 
-The classification summary provides baseline models of 10 different algorithms, user can identify best performing baseline models from the classification summary.
+- For classification - HP_Tune_Classification() 
+- For Regression - HP_Tune_Regression()
 
-In the same way, regression analysis can be done using a few lines of code. 
+![HP_Tune}(https://raw.githubusercontent.com/taknev83/pywedge/main/images/HP_tune.gif)  
+    
+As seen in the above GIF, user can interactively enter hyperparameter values, without worrying about tracking the same, as the integreted MLFlow automatically takes care of tracking hyperparameter values. 
+
+Regression Hyperparameter tuning is in the same lines of above steps.
 
 
 ### The following additions to pywedge is planned,
