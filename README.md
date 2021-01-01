@@ -28,7 +28,6 @@ Mlflow has to be separately installed to track the hyperparameters,
 
 ```
 pip install mlflow
-
 ```
 
 Pywedge is a [pip installable](https://pypi.org/project/pywedge/) Python package that intends to,
@@ -149,7 +148,7 @@ Returns:
 Instantiate the Pywedge_HP class & call the HP_Tune_CLassification method from Pywedge_HP class,
 
 ```python
-pph = pw.Pywedge_HP(train, test, c, y)
+pph = pw.Pywedge_HP(train, test, c, y, tracking=False)
 pph.HP_Tune_Classification()
 ```
 
@@ -158,7 +157,7 @@ Args:
 2) test = test dataframe
 3) c = any redundant column to be removed (like ID column etc., at present supports a single column removal, subsequent version will provision multiple column removal requirements)
 4) y = target column name as a string 
-
+5) tracking = True/False(Default) #to enable mlflow hyperpameter tracking
 
 - For classification - HP_Tune_Classification() 
 - For Regression - HP_Tune_Regression()
@@ -166,6 +165,21 @@ Args:
 ![HP_Tune](https://raw.githubusercontent.com/taknev83/pywedge/main/images/HP_tune.gif)  
     
 As seen in the above GIF, user can interactively enter hyperparameter values, without worrying about tracking the same, as the integreted MLFlow automatically takes care of tracking hyperparameter values. 
+
+To invoke mlflow tracking user interface, follow the below steps,
+1) open command prompt
+2) change directory to the location of the Jupyter Notebook file, for eg., if Jupyter notebook in a folder named pywedge in Documents folder, 
+    ```
+    cd documents\pywedge
+    ```
+3) enter the following command from the same folder as of the Jupyter Notebook file,
+    ```
+    mlflow ui
+    ```
+4) which trigers the mlflow ui & typically mlflow starts in the local host 5000. Please find the below pic for reference,
+
+![mlflow_cmd](https://raw.githubusercontent.com/taknev83/pywedge/main/images/Mlflow_cmd.JPG)
+
 
 Regression Hyperparameter tuning is in the same lines of above steps.
 
