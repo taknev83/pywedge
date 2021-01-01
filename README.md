@@ -24,6 +24,12 @@ jupyter labextension install jupyterlab-plotly@4.14.1
 jupyter labextension install @jupyter-widgets/jupyterlab-manager plotlywidget@4.14.1
 ```
 
+Mlflow has to be separately installed to track the hyperparameters,
+
+```
+pip install mlflow
+
+```
 
 Pywedge is a [pip installable](https://pypi.org/project/pywedge/) Python package that intends to,
 
