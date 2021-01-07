@@ -5,4 +5,5 @@ nav:
   - Examples: examples.md
   - License: license.md
 
+repo_url: https://github.com/taknev83/pywedge
 theme: readthedocs
