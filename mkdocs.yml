@@ -1,0 +1,8 @@
+site_name: Pywedge documentation
+nav:
+  - Home: index.md
+  - Modules: modules.md
+  - Examples: examples.md
+  - License: license.md
+
+theme: readthedocs
