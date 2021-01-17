@@ -12,18 +12,20 @@
 
 Pywedge is a [pip installable](https://pypi.org/project/pywedge/) Python package that intends to,
 
-1. Make multiple charts in a single line of code, to enable the user to quickly read through the charts and can make informed choices in pre-processing steps
+1. Make multiple interactive charts in a single line of code, to enable the user to quickly read through the charts and can make informed choices in pre-processing steps
 
-2. Quickly preprocess the data by taking the user’s preferred choice of pre-processing techniques & it returns the cleaned datasets to the user in the first step.
+2. Interactively preprocess the data by taking the user’s preferred choice of pre-processing techniques,
 
-3. Make a baseline model summary, which can return ten various baseline models, which can point the user to explore the best performing baseline model.
+3. Make a baseline model summary, which can return ten various baseline models & predict the standout test data from selected baseline model.
+
+4. Interactively select hyperparameters in a widget style tab, track the hyperparameters using MLFlow & predict on standout data.
 
 Pywedge intends to help the user by quickly making charts, preprocessing the data and to rightly point out the best performing baseline model for the given dataset so that the user can spend quality time tuning such a model algorithm.
 
 # Installation
 
 ```
-pip install pywedge
+pip install pywedge --upgrade
 ```
 
 For JupyterLab, please run the following commands in anaconda prompt to enable required JupyterLab extensions to display interactive chart widget,
@@ -55,11 +57,16 @@ Cleans the raw data frame to fed into ML models. Following data pre_processing w
  3) Interactive Hyperparameter tuning & tracking hyperparameters using integreted MLFlow
     - Classification / Regression Hyperparameters tuning
         - Available baseline estimators for interactive hyperparameter tuning as of now, more baseline estimators will be added soon for interactive hyperparameter tunings
-        - Logistic / Linear Regression
-        - Decision Tree Classifier / Regressor
-        - Random Forest Clasifier/ Regressor
-        - KNN Classifier / Regressor
-
+        
+        | Classification | Regression |
+        | :---: | :---: |
+        | Logistic Regression | Linear Regression |
+        | Decision Tree Classifier | Decision Tree Regressor | 
+        | Random Forest Classifier | Random Forest Regressor |
+        | AdaBoost Classifier | AdaBoost Regressor |
+        | ExtraTrees Classifier | ExtraTrees Regressor |
+        | KNN Classifier | KNN Regressor |
+              
 # Make_Charts()
 Makes 8 different types of interactive Charts with interactive axis selection widgets in a single line of code for the given dataset. 
 
