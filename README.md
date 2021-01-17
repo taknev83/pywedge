@@ -1,6 +1,8 @@
-[![Documentation Status](https://readthedocs.org/projects/pywedge/badge/?version=main)](https://pywedge.readthedocs.io/en/main/?badge=main)  [![Downloads](https://pepy.tech/badge/pywedge)](https://pepy.tech/project/pywedge) [![PyPI version](https://badge.fury.io/py/pywedge.svg)](https://badge.fury.io/py/pywedge) [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
+[![Downloads](https://pepy.tech/badge/pywedge)](https://pepy.tech/project/pywedge) [![PyPI version](https://badge.fury.io/py/pywedge.svg)](https://badge.fury.io/py/pywedge) [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
 
-# Pywedge                                   
+# Pywedge        
+
+# [Pywedge_Demo_Heroko Web App](https://pywedge-demo.herokuapp.com/)
 
 [Pywedge-Make_Charts Heroku Web App - Demo](https://pywedge-make-charts.herokuapp.com/)
 
@@ -191,6 +193,8 @@ To invoke mlflow tracking user interface, follow the below steps,
 
 
 Regression Hyperparameter tuning is in the same lines of above steps.
+
+# [>> Pywedge Documentation](https://taknev83.github.io/pywedge-docs/)
 
 
 ### The following additions to pywedge is planned,
