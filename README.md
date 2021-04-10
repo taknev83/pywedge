@@ -1,4 +1,4 @@
-[![Downloads](https://pepy.tech/badge/pywedge)](https://pepy.tech/project/pywedge) [![PyPI version](https://badge.fury.io/py/pywedge.svg)](https://badge.fury.io/py/pywedge) [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
+[![Gitter](https://badges.gitter.im/pywedge/community.svg)](https://gitter.im/pywedge/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge) [![Downloads](https://pepy.tech/badge/pywedge)](https://pepy.tech/project/pywedge) [![PyPI version](https://badge.fury.io/py/pywedge.svg)](https://badge.fury.io/py/pywedge) [![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](https://opensource.org/licenses/MIT)
 
 # Pywedge        
 
@@ -9,6 +9,8 @@
 ## [Pywedge_Demo_Heroko Web App](https://pywedge-demo.herokuapp.com/)
 
 # [>> Pywedge Documentation](https://taknev83.github.io/pywedge-docs/)
+
+
 
 ## What is Pywedge?
 
