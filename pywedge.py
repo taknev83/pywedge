@@ -24,10 +24,11 @@ class Pywedge_Charts():
         self.train = train
         self.c = c
         self.y = y
-        self.X = self.train.drop(self.y,1)
+        self.X = self.train.drop(columns=self.y)
         self.manual = manual
 
     def make_charts(self):
+	from IPython.display import display
         import pandas as pd
         import ipywidgets as widgets
         import plotly.express as px
